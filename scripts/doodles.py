@@ -17,7 +17,8 @@ HAND = "'Caveat','Bradley Hand','Segoe Print','Chalkboard SE','Comic Sans MS',cu
 STYLE = f"""<style>
 .ink{{fill:#1f1b17}} .inks{{stroke:#1f1b17;fill:none}} .soft{{fill:#5f574e}} .faint{{fill:#b9b0a2}} .faints{{stroke:#b9b0a2;fill:none}}
 .paper{{fill:#fffdf7}} .tape{{fill:#ebe4d6;opacity:.9}} .shadow{{fill:#1f1b17;opacity:.07}}
-.l1{{stroke:#d9a441}} .l2{{stroke:#ef9a73}} .l3{{stroke:#e07368}} .l4{{stroke:#ad5d58}} .hl{{stroke:#e07368;fill:none}}
+.l1{{stroke:#d89aa5}} .l2{{stroke:#c27a86}} .l3{{stroke:#ab5e67}} .l4{{stroke:#853f46}} .hl{{stroke:#ab5e67;fill:none}}
+.c0{{stroke:#ab5e67}} .c1{{stroke:#957b94}} .c2{{stroke:#63607d}} .c3{{stroke:#d89aa5}} .c4{{stroke:#853f46}} .c5{{stroke:#3c405e}}
 .type{{font-family:{TYPE}}} .hand{{font-family:{HAND}}}
 .w{{opacity:0;animation:pop .5s ease-out forwards}}
 @keyframes pop{{from{{opacity:0;transform:translateY(-4px)}}to{{opacity:1;transform:none}}}}
@@ -25,7 +26,8 @@ STYLE = f"""<style>
 @media (prefers-color-scheme:dark){{
  .ink{{fill:#ece4d6}} .inks{{stroke:#ece4d6}} .soft{{fill:#b3a99b}} .faint{{fill:#5d564e}} .faints{{stroke:#5d564e}}
  .paper{{fill:#22201d}} .tape{{fill:#4a443d}} .shadow{{fill:#000;opacity:.25}}
- .l1{{stroke:#e8bf6a}} .l2{{stroke:#f3aa87}} .l3{{stroke:#ec8a7e}} .l4{{stroke:#f2b3a6}} .hl{{stroke:#ec8a7e}}
+ .l1{{stroke:#8d5a66}} .l2{{stroke:#b9737f}} .l3{{stroke:#d89aa5}} .l4{{stroke:#f0c4cb}} .hl{{stroke:#d89aa5}}
+ .c0{{stroke:#d89aa5}} .c1{{stroke:#b9a0b8}} .c2{{stroke:#9a96b8}} .c3{{stroke:#f0c4cb}} .c4{{stroke:#c27a86}} .c5{{stroke:#7d82a8}}
 }}
 </style>"""
 
@@ -125,15 +127,9 @@ def arrowhead(p, x, y, ang, cls="inks", size=7):
 def contrib(user):
     cal = user["contributionsCollection"]["contributionCalendar"]
     weeks = cal["weeks"]
-    W, left, top = 900, 52, 84
+    W, left, top = 900, 52, 44
     pitch = min(15.5, (W - left - 30) / len(weeks))
     body = []
-
-    p = Pencil("title")
-    body.append(f'<text x="{left - 6}" y="40" class="hand ink" font-size="30">a year of tiny marks</text>')
-    body.append(path(p.line(left - 4, 50, left + 196, 47, 2.5), "hl", 2))
-    body.append(f'<text x="{W - 28}" y="40" text-anchor="end" class="type soft" font-size="13">'
-                f'{cal["totalContributions"]} contributions · last 12 months</text>')
 
     for i, lab in ((1, "mon"), (3, "wed"), (5, "fri")):
         body.append(f'<text x="14" y="{top + i * pitch + 3.5:.1f}" class="type faint" font-size="9.5">{lab}</text>')
@@ -161,11 +157,11 @@ def contrib(user):
     busiest = max(days, key=lambda t: t[1])
     if busiest[1] > 0:
         _, n, bx, by = busiest
-        nx = min(max(bx - 60, left), W - 330)
+        nx = min(max(bx - 60, left), W - 160)
         ny = bottom + 44
         body.append(f'<text x="{nx:.1f}" y="{ny:.1f}" class="hand ink" font-size="19">'
-                    f'busiest day — {busiest[0].strftime("%b %-d")}, {n} marks</text>')
-        sx, sy = min(max(bx - 30, nx + 20), nx + 200), ny - 22  # start just above the note
+                    'busiest day</text>')
+        sx, sy = min(max(bx - 30, nx + 20), nx + 80), ny - 22  # start just above the note
         c1x, c1y = (sx + bx) / 2 + (28 if bx >= sx else -28), (sy + by) / 2 + 4
         body.append(path(f"M{sx:.1f} {sy:.1f}Q{c1x:.1f} {c1y:.1f} {bx - 3:.1f} {by + 9:.1f}", "inks", 1.5))
         ang = math.atan2((by + 9) - c1y, (bx - 3) - c1x)
@@ -173,23 +169,9 @@ def contrib(user):
         body.append(path(p.circle(bx, by, pitch * 0.62, 0.8), "hl", 1.4))
     else:
         body.append(f'<text x="{left}" y="{bottom + 44:.1f}" class="hand soft" font-size="19">'
-                    f'a quiet year — the page is still waiting ✎</text>')
+                    'a quiet year</text>')
 
-    cur, best, run = 0, 0, 0
-    today = max(d[0] for d in days)
-    for date, n, *_ in sorted(days):
-        run = run + 1 if n > 0 else 0
-        best = max(best, run)
-    for date, n, *_ in sorted(days, reverse=True):
-        if n > 0:
-            cur += 1
-        elif date == today:  # today may simply not have happened yet
-            continue
-        else:
-            break
     lx, ly = W - 210, bottom + 76
-    body.append(f'<text x="{left - 6}" y="{ly + 4:.1f}" class="type soft" font-size="12">'
-                f'current streak {cur}d · longest {best}d</text>')
     body.append(f'<text x="{lx}" y="{ly + 4}" class="type faint" font-size="10">less</text>')
     for i, lv in enumerate(["NONE", "FIRST_QUARTILE", "SECOND_QUARTILE", "THIRD_QUARTILE", "FOURTH_QUARTILE"]):
         body.append(cell(Pencil(f"legend{i}"), lv, lx + 44 + i * 18, ly, 15.5))
@@ -262,7 +244,7 @@ def langs(user):
             sizes.setdefault(k, [0, e["node"]["color"] or "#b9b0a2"])
             sizes[k][0] += e["size"]
     total = sum(v[0] for v in sizes.values()) or 1
-    top = sorted(sizes.items(), key=lambda kv: -kv[1][0])[:6]
+    top = [kv for kv in sorted(sizes.items(), key=lambda kv: -kv[1][0]) if kv[1][0] / total >= 0.01][:6]
     body = card_frame(p, W, H, "INK & LANGUAGES", 1.1)
     x0, maxw = 150, W - 150 - 112
     for i, (name, (size, color)) in enumerate(top):
@@ -270,15 +252,39 @@ def langs(user):
         pct = size / total
         bw = max(6, maxw * pct / (top[0][1][0] / total))
         body.append(f'<text x="40" y="{y}" class="type soft" font-size="12.5">{esc(name)}</text>')
-        body.append(f'<path d="{p.scribble(x0, y - 11, bw, 9, max(3, int(bw / 4)))}" stroke="{color}" '
-                    f'stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>')
+        body.append(path(p.scribble(x0, y - 11, bw, 9, max(3, int(bw / 4))), f"c{i}", 2))
         body.append(path(p.line(x0 - 2, y + 1, x0 + bw + 2, y, 0.8), "inks", 0.9))
         body.append(f'<text x="{W - 46}" y="{y + 1}" text-anchor="end" class="hand ink" font-size="20">'
                     f'{pct * 100:.0f}%</text>')
     if not top:
-        body.append('<text x="40" y="110" class="hand soft" font-size="20">nothing here yet ✎</text>')
+        body.append('<text x="40" y="110" class="hand soft" font-size="20">nothing here yet</text>')
     body.append("</g>")
     return svg(W, H, "Languages: " + ", ".join(f"{k} {v[0] * 100 / total:.0f}%" for k, v in top), "\n".join(body))
+
+
+# ---------------------------------------------------------------- link doodles
+ICONS = {
+    # tiny house with a heart window
+    "home": "M4 15L13 6L22 15M7 13V23H19V13M13 21C10 18.6 9.6 17 10.8 16.2C11.7 15.6 12.6 16.1 13 16.8C13.4 16.1 14.3 15.6 15.2 16.2C16.4 17 16 18.6 13 21Z",
+    # open book
+    "blog": "M3 9Q8 6.5 13 9.5Q18 6.5 23 9V21Q18 18.5 13 21.5Q8 18.5 3 21ZM13 9.5V21.5",
+    # island with a little hill and a wave
+    "island": "M3 19Q8 12 13 13Q18 12 23 19ZM9 13.4Q11 8 14.5 9.5M14.5 9.5Q16.5 6.5 19 8M2 23Q5 21 8 23T14 23T20 23T25 22",
+    # speech bubble
+    "hi": "M4 8Q4 5 7 5H19Q22 5 22 8V15Q22 18 19 18H11L6.5 22L7.5 18Q4 18 4 15ZM9.5 11.5H9.6M13 11.5H13.1M16.5 11.5H16.6",
+}
+
+
+def link(key, label):
+    p = Pencil("link-" + key)
+    w = int(52 + len(label) * 11.5)
+    body = [path(ICONS[key], "inks", 1.6, 'transform="translate(2 6)"'),
+            f'<text x="38" y="27" class="hand ink" font-size="22">{esc(label)}</text>',
+            path(p.line(38, 34, w - 6, 32.5, 1.8), "hl", 1.8)]
+    return svg(w, 42, label, "\n".join(body))
+
+
+LINKS = [("home", "yishu.asia"), ("blog", "the blog"), ("island", "the 3D island"), ("hi", "say hi")]
 
 
 if __name__ == "__main__":
@@ -288,3 +294,7 @@ if __name__ == "__main__":
         with open(f"{OUT}/{name}.svg", "w", encoding="utf-8") as f:
             f.write(fn(user))
         print("drew", name)
+    for key, label in LINKS:
+        with open(f"{OUT}/link-{key}.svg", "w", encoding="utf-8") as f:
+            f.write(link(key, label))
+    print("drew links")
