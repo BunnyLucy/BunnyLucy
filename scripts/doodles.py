@@ -161,12 +161,12 @@ def contrib(user):
     busiest = max(days, key=lambda t: t[1])
     if busiest[1] > 0:
         _, n, bx, by = busiest
-        nx = min(max(bx - 60, left), W - 250)
+        nx = min(max(bx - 60, left), W - 330)
         ny = bottom + 44
         body.append(f'<text x="{nx:.1f}" y="{ny:.1f}" class="hand ink" font-size="19">'
                     f'busiest day — {busiest[0].strftime("%b %-d")}, {n} marks</text>')
-        sx, sy = nx + 40, ny - 17
-        c1x, c1y = sx - 20, (sy + by) / 2 + 10
+        sx, sy = min(max(bx - 30, nx + 20), nx + 200), ny - 22  # start just above the note
+        c1x, c1y = (sx + bx) / 2 + (28 if bx >= sx else -28), (sy + by) / 2 + 4
         body.append(path(f"M{sx:.1f} {sy:.1f}Q{c1x:.1f} {c1y:.1f} {bx - 3:.1f} {by + 9:.1f}", "inks", 1.5))
         ang = math.atan2((by + 9) - c1y, (bx - 3) - c1x)
         body.append(arrowhead(p, bx - 3, by + 9, ang))
@@ -187,10 +187,9 @@ def contrib(user):
             continue
         else:
             break
-    body.append(f'<text x="{W - 28}" y="{bottom + 44:.1f}" text-anchor="end" class="type soft" font-size="12">'
-                f'current streak {cur}d · longest {best}d</text>')
-
     lx, ly = W - 210, bottom + 76
+    body.append(f'<text x="{left - 6}" y="{ly + 4:.1f}" class="type soft" font-size="12">'
+                f'current streak {cur}d · longest {best}d</text>')
     body.append(f'<text x="{lx}" y="{ly + 4}" class="type faint" font-size="10">less</text>')
     for i, lv in enumerate(["NONE", "FIRST_QUARTILE", "SECOND_QUARTILE", "THIRD_QUARTILE", "FOURTH_QUARTILE"]):
         body.append(cell(Pencil(f"legend{i}"), lv, lx + 44 + i * 18, ly, 15.5))
