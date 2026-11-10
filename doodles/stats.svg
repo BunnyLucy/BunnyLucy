@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="250" viewBox="0 0 440 250" role="img" aria-label="Field notes: 0 stars collected, 77 commits this year, 1 pull requests, 1 issues opened, 5 public repos, 4 followers"><title>Field notes: 0 stars collected, 77 commits this year, 1 pull requests, 1 issues opened, 5 public repos, 4 followers</title><style>
+.ink{fill:#1f1b17} .inks{stroke:#1f1b17;fill:none} .soft{fill:#5f574e} .faint{fill:#b9b0a2} .faints{stroke:#b9b0a2;fill:none}
+.paper{fill:#fffdf7} .tape{fill:#ebe4d6;opacity:.9} .shadow{fill:#1f1b17;opacity:.07}
+.l1{stroke:#d9a441} .l2{stroke:#ef9a73} .l3{stroke:#e07368} .l4{stroke:#ad5d58} .hl{stroke:#e07368;fill:none}
+.type{font-family:'Special Elite','Courier Prime','Courier New',Courier,monospace} .hand{font-family:'Caveat','Bradley Hand','Segoe Print','Chalkboard SE','Comic Sans MS',cursive}
+.w{opacity:0;animation:pop .5s ease-out forwards}
+@keyframes pop{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.w{animation:none;opacity:1}}
+@media (prefers-color-scheme:dark){
+ .ink{fill:#ece4d6} .inks{stroke:#ece4d6} .soft{fill:#b3a99b} .faint{fill:#5d564e} .faints{stroke:#5d564e}
+ .paper{fill:#22201d} .tape{fill:#4a443d} .shadow{fill:#000;opacity:.25}
+ .l1{stroke:#e8bf6a} .l2{stroke:#f3aa87} .l3{stroke:#ec8a7e} .l4{stroke:#f2b3a6} .hl{stroke:#ec8a7e}
+}
+</style>
+<g transform="rotate(-1.2 220.0 125.0)">
+<rect x="20" y="24" width="404" height="208" class="shadow"/>
+<rect x="16" y="18" width="404" height="208" class="paper"/>
+<path d="M15.5 17.8Q218.1 17.5 420.2 17.3M419.9 18.0Q420.9 122.1 419.4 225.4M419.3 225.5Q219.0 225.0 16.7 226.1M15.4 226.7Q15.1 122.0 15.5 17.7M16.2 18.6Q219.7 18.6 420.4 17.5M421.0 17.6Q419.9 121.7 420.6 225.8M420.1 226.5Q216.1 225.5 16.6 226.3M16.0 225.1Q17.8 122.9 16.2 18.2" class="inks" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<rect x="186.0" y="8" width="68" height="20" class="tape" transform="rotate(-4 220.0 18)"/>
+<text x="38" y="58" class="type ink" font-size="14" letter-spacing="3">FIELD NOTES</text>
+<path d="M37.5 65.2Q102.1 63.2 165.0 62.9" class="hl" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<text x="40" y="94" class="type soft" font-size="12.5">stars collected</text>
+<path d="M162.1 90.7Q255.5 90.9 348.0 90.2" class="faints" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 4"/>
+<text x="394" y="96" text-anchor="end" class="hand ink" font-size="23">0</text>
+<text x="40" y="118" class="type soft" font-size="12.5">commits this year</text>
+<path d="M177.6 114.7Q262.1 113.8 347.6 113.7" class="faints" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 4"/>
+<text x="394" y="120" text-anchor="end" class="hand ink" font-size="23">77</text>
+<text x="40" y="142" class="type soft" font-size="12.5">pull requests</text>
+<path d="M147.1 139.0Q248.0 138.5 348.1 137.7" class="faints" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 4"/>
+<text x="394" y="144" text-anchor="end" class="hand ink" font-size="23">1</text>
+<text x="40" y="166" class="type soft" font-size="12.5">issues opened</text>
+<path d="M146.6 163.3Q247.8 162.1 348.3 161.7" class="faints" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 4"/>
+<text x="394" y="168" text-anchor="end" class="hand ink" font-size="23">1</text>
+<text x="40" y="190" class="type soft" font-size="12.5">public repos</text>
+<path d="M139.4 187.3Q242.8 186.3 348.1 186.2" class="faints" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 4"/>
+<text x="394" y="192" text-anchor="end" class="hand ink" font-size="23">5</text>
+<text x="40" y="214" class="type soft" font-size="12.5">followers</text>
+<path d="M116.4 211.2Q232.6 210.3 347.9 209.9" class="faints" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 4"/>
+<text x="394" y="216" text-anchor="end" class="hand ink" font-size="23">4</text>
+<path d="M377.8 43.5L380.6 50.1L388.2 51.0L382.2 55.0L384.7 62.5L378.3 59.0L371.0 62.5L373.7 55.4L368.1 50.1L375.7 50.3L378.6 43.0" class="l1" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+</g>
+</svg>
