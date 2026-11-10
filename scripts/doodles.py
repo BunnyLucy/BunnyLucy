@@ -314,45 +314,6 @@ def langs(user):
     return svg(W, H, "Languages: " + ", ".join(f"{k} {v[0] * 100 / total:.0f}%" for k, v in top), "\n".join(body))
 
 
-# ---------------------------------------------------------------- handwritten links
-# Blog / 3D / Contact are drawn from the glyphs yishu.asia itself uses, so they stay in sync.
-WORDS = [("blog", "blog", "Blog"), ("3d", "threeD", "3D"), ("contact", "contact", "Contact")]
-ARROW = "M2 9 Q14 5 34 8 M27 3 L35 8 L28 13"
-
-
-def handwriting():
-    import re
-    page = urllib.request.urlopen("https://yishu.asia/", timeout=30).read().decode()
-    src = re.search(r'src="(/assets/index-[^"]+\.js)"', page).group(1)
-    js = urllib.request.urlopen("https://yishu.asia" + src, timeout=30).read().decode()
-    words = {}
-    for slug, key, label in WORDS:
-        i = js.index(key + ":{glyphs:[") + len(key) + 1
-        depth = 0
-        for j in range(i, len(js)):
-            depth += {"{": 1, "}": -1}.get(js[j], 0)
-            if depth == 0:
-                break
-        lit = re.sub(r'([{,])([A-Za-z_]\w*):', r'\1"\2":', js[i:j + 1])
-        words[slug] = json.loads(lit)
-    return words
-
-
-def link(word, label):
-    cap = word["glyphs"][0]["h"]  # normalise by the first capital
-    sc = 26 / cap
-    paths = "".join(f'<path d="{g["d"]}" transform="translate({g["x"]} {g["y"]})"/>' for g in word["glyphs"])
-    ww, wh = word["w"] * sc, word["h"] * sc
-    top = word["glyphs"][0]["y"] * sc
-    W, H = int(ww + 46), 44
-    oy = 6 - top
-    body = (f'<g transform="translate(4 {oy:.1f}) scale({sc:.4f})" class="glyph" stroke-width="4" '
-            f'stroke-linejoin="round">{paths}</g>'
-            f'<svg x="{ww + 12:.1f}" y="{6 + 26 * 0.55 - 6:.1f}" width="30" height="12" viewBox="0 0 40 16">'
-            f'{path(ARROW, "hl", 2.2)}</svg>')
-    return svg(W, H, label, body)
-
-
 if __name__ == "__main__":
     user = fetch()
     os.makedirs(OUT, exist_ok=True)
@@ -360,14 +321,7 @@ if __name__ == "__main__":
         with open(f"{OUT}/{name}.svg", "w", encoding="utf-8") as f:
             f.write(embed_fonts(fn(user)))
         print("drew", name)
-    try:
-        for slug, word in handwriting().items():
-            label = dict((a, c) for a, _, c in WORDS)[slug]
-            with open(f"{OUT}/link-{slug}.svg", "w", encoding="utf-8") as f:
-                f.write(link(word, label))
-        print("drew links")
-    except Exception as e:  # keep yesterday's links if the site is unreachable
-        print("handwriting fetch failed, keeping existing links:", e)
+    # doodles/link-*.svg are Yishu's own handwriting from yishu.asia and are kept as-is
     for old in ("home", "island", "hi"):
         if os.path.exists(f"{OUT}/link-{old}.svg"):
             os.remove(f"{OUT}/link-{old}.svg")
