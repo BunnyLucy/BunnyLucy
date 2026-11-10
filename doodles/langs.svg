@@ -1,7 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="440" height="250" viewBox="0 0 440 250" role="img" aria-label="Languages: CSS 50%, HTML 46%, Python 3%, JavaScript 1%, TypeScript 1%, Shell 0%"><title>Languages: CSS 50%, HTML 46%, Python 3%, JavaScript 1%, TypeScript 1%, Shell 0%</title><style>
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="250" viewBox="0 0 440 250" role="img" aria-label="Languages: CSS 50%, HTML 46%, Python 3%"><title>Languages: CSS 50%, HTML 46%, Python 3%</title><style>
 .ink{fill:#1f1b17} .inks{stroke:#1f1b17;fill:none} .soft{fill:#5f574e} .faint{fill:#b9b0a2} .faints{stroke:#b9b0a2;fill:none}
 .paper{fill:#fffdf7} .tape{fill:#ebe4d6;opacity:.9} .shadow{fill:#1f1b17;opacity:.07}
-.l1{stroke:#d9a441} .l2{stroke:#ef9a73} .l3{stroke:#e07368} .l4{stroke:#ad5d58} .hl{stroke:#e07368;fill:none}
+.l1{stroke:#d89aa5} .l2{stroke:#c27a86} .l3{stroke:#ab5e67} .l4{stroke:#853f46} .hl{stroke:#ab5e67;fill:none}
+.c0{stroke:#ab5e67} .c1{stroke:#957b94} .c2{stroke:#63607d} .c3{stroke:#d89aa5} .c4{stroke:#853f46} .c5{stroke:#3c405e}
 .type{font-family:'Special Elite','Courier Prime','Courier New',Courier,monospace} .hand{font-family:'Caveat','Bradley Hand','Segoe Print','Chalkboard SE','Comic Sans MS',cursive}
 .w{opacity:0;animation:pop .5s ease-out forwards}
 @keyframes pop{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
@@ -9,7 +10,8 @@
 @media (prefers-color-scheme:dark){
  .ink{fill:#ece4d6} .inks{stroke:#ece4d6} .soft{fill:#b3a99b} .faint{fill:#5d564e} .faints{stroke:#5d564e}
  .paper{fill:#22201d} .tape{fill:#4a443d} .shadow{fill:#000;opacity:.25}
- .l1{stroke:#e8bf6a} .l2{stroke:#f3aa87} .l3{stroke:#ec8a7e} .l4{stroke:#f2b3a6} .hl{stroke:#ec8a7e}
+ .l1{stroke:#8d5a66} .l2{stroke:#b9737f} .l3{stroke:#d89aa5} .l4{stroke:#f0c4cb} .hl{stroke:#d89aa5}
+ .c0{stroke:#d89aa5} .c1{stroke:#b9a0b8} .c2{stroke:#9a96b8} .c3{stroke:#f0c4cb} .c4{stroke:#c27a86} .c5{stroke:#7d82a8}
 }
 </style>
 <g transform="rotate(1.1 220.0 125.0)">
@@ -20,28 +22,16 @@
 <text x="38" y="58" class="type ink" font-size="14" letter-spacing="3">INK &amp; LANGUAGES</text>
 <path d="M38.7 66.9Q122.6 64.8 211.4 62.4" class="hl" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" />
 <text x="40" y="94" class="type soft" font-size="12.5">CSS</text>
-<path d="M150.9 92.0L154.3 83.6L157.9 92.2L161.6 82.8L166.3 91.7L171.0 83.1L174.0 91.8L178.9 82.8L183.1 92.1L185.8 83.8L189.8 92.9L194.5 83.6L199.1 91.5L202.2 82.0L207.0 91.9L210.3 83.2L214.0 92.4L218.7 82.7L223.3 92.1L227.5 82.5L230.2 91.9L235.3 83.1L238.3 92.3L242.5 83.2L247.8 91.5L251.6 82.0L254.9 92.6L259.9 82.3L262.5 91.8L268.1 83.1L270.9 91.8L275.2 83.8L280.1 92.7L283.0 82.0L287.6 92.8L291.6 82.3L295.9 92.5L298.9 82.4L304.4 91.9L307.5 83.4L311.1 91.6L316.5 82.5L320.6 91.8L323.6 82.1L328.0 92.2" stroke="#663399" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+<path d="M150.9 92.0L154.3 83.6L157.9 92.2L161.6 82.8L166.3 91.7L171.0 83.1L174.0 91.8L178.9 82.8L183.1 92.1L185.8 83.8L189.8 92.9L194.5 83.6L199.1 91.5L202.2 82.0L207.0 91.9L210.3 83.2L214.0 92.4L218.7 82.7L223.3 92.1L227.5 82.5L230.2 91.9L235.3 83.1L238.3 92.3L242.5 83.2L247.8 91.5L251.6 82.0L254.9 92.6L259.9 82.3L262.5 91.8L268.1 83.1L270.9 91.8L275.2 83.8L280.1 92.7L283.0 82.0L287.6 92.8L291.6 82.3L295.9 92.5L298.9 82.4L304.4 91.9L307.5 83.4L311.1 91.6L316.5 82.5L320.6 91.8L323.6 82.1L328.0 92.2" class="c0" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
 <path d="M148.1 94.9Q239.6 94.2 330.1 93.9" class="inks" stroke-width="0.9" fill="none" stroke-linecap="round" stroke-linejoin="round" />
 <text x="394" y="95" text-anchor="end" class="hand ink" font-size="20">50%</text>
 <text x="40" y="118" class="type soft" font-size="12.5">HTML</text>
-<path d="M150.7 116.6L154.6 107.8L157.9 115.1L162.6 106.8L166.8 116.2L170.3 107.1L174.4 116.7L178.6 107.4L181.7 115.8L186.8 107.8L190.1 115.4L194.2 107.6L198.9 116.1L202.8 106.4L205.8 115.4L209.7 107.8L213.6 115.4L218.5 106.7L222.3 116.5L227.2 107.3L229.7 116.4L235.1 107.5L238.0 115.2L242.8 106.2L247.0 115.9L251.0 107.4L254.5 116.5L259.0 108.0L263.1 116.9L266.2 107.6L271.4 116.2L274.8 106.2L278.5 116.7L283.2 106.4L286.4 115.7L291.4 107.5L295.2 116.4L298.8 107.3L303.0 115.5L307.4 107.2L310.9 115.2L314.3 107.8" stroke="#e34c26" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+<path d="M150.7 116.6L154.6 107.8L157.9 115.1L162.6 106.8L166.8 116.2L170.3 107.1L174.4 116.7L178.6 107.4L181.7 115.8L186.8 107.8L190.1 115.4L194.2 107.6L198.9 116.1L202.8 106.4L205.8 115.4L209.7 107.8L213.6 115.4L218.5 106.7L222.3 116.5L227.2 107.3L229.7 116.4L235.1 107.5L238.0 115.2L242.8 106.2L247.0 115.9L251.0 107.4L254.5 116.5L259.0 108.0L263.1 116.9L266.2 107.6L271.4 116.2L274.8 106.2L278.5 116.7L283.2 106.4L286.4 115.7L291.4 107.5L295.2 116.4L298.8 107.3L303.0 115.5L307.4 107.2L310.9 115.2L314.3 107.8" class="c1" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
 <path d="M147.9 119.1Q232.6 118.6 316.8 118.4" class="inks" stroke-width="0.9" fill="none" stroke-linecap="round" stroke-linejoin="round" />
 <text x="394" y="119" text-anchor="end" class="hand ink" font-size="20">46%</text>
 <text x="40" y="142" class="type soft" font-size="12.5">Python</text>
-<path d="M149.2 140.0L153.3 130.8L155.8 139.7L159.3 130.2" stroke="#3572A5" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+<path d="M149.2 140.0L153.3 130.8L155.9 139.7L159.3 130.2" class="c2" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
 <path d="M148.0 143.2Q154.9 143.2 161.8 141.9" class="inks" stroke-width="0.9" fill="none" stroke-linecap="round" stroke-linejoin="round" />
 <text x="394" y="143" text-anchor="end" class="hand ink" font-size="20">3%</text>
-<text x="40" y="166" class="type soft" font-size="12.5">JavaScript</text>
-<path d="M150.3 164.0L152.2 155.3L154.6 164.2L156.2 154.1" stroke="#f1e05a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
-<path d="M148.3 167.0Q153.7 167.1 157.9 165.7" class="inks" stroke-width="0.9" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-<text x="394" y="167" text-anchor="end" class="hand ink" font-size="20">1%</text>
-<text x="40" y="190" class="type soft" font-size="12.5">TypeScript</text>
-<path d="M150.3 188.5L152.5 178.8L153.6 187.8L156.0 178.3" stroke="#3178c6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
-<path d="M148.3 191.1Q153.7 190.2 158.0 190.0" class="inks" stroke-width="0.9" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-<text x="394" y="191" text-anchor="end" class="hand ink" font-size="20">1%</text>
-<text x="40" y="214" class="type soft" font-size="12.5">Shell</text>
-<path d="M150.1 213.0L152.1 202.0L153.7 212.6L155.8 202.9" stroke="#89e051" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
-<path d="M148.4 214.8Q153.4 214.5 158.3 214.1" class="inks" stroke-width="0.9" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-<text x="394" y="215" text-anchor="end" class="hand ink" font-size="20">0%</text>
 </g>
 </svg>

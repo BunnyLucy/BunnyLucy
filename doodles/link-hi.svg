@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="121" height="42" viewBox="0 0 121 42" role="img" aria-label="say hi"><title>say hi</title><style>
+.ink{fill:#1f1b17} .inks{stroke:#1f1b17;fill:none} .soft{fill:#5f574e} .faint{fill:#b9b0a2} .faints{stroke:#b9b0a2;fill:none}
+.paper{fill:#fffdf7} .tape{fill:#ebe4d6;opacity:.9} .shadow{fill:#1f1b17;opacity:.07}
+.l1{stroke:#d89aa5} .l2{stroke:#c27a86} .l3{stroke:#ab5e67} .l4{stroke:#853f46} .hl{stroke:#ab5e67;fill:none}
+.c0{stroke:#ab5e67} .c1{stroke:#957b94} .c2{stroke:#63607d} .c3{stroke:#d89aa5} .c4{stroke:#853f46} .c5{stroke:#3c405e}
+.type{font-family:'Special Elite','Courier Prime','Courier New',Courier,monospace} .hand{font-family:'Caveat','Bradley Hand','Segoe Print','Chalkboard SE','Comic Sans MS',cursive}
+.w{opacity:0;animation:pop .5s ease-out forwards}
+@keyframes pop{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.w{animation:none;opacity:1}}
+@media (prefers-color-scheme:dark){
+ .ink{fill:#ece4d6} .inks{stroke:#ece4d6} .soft{fill:#b3a99b} .faint{fill:#5d564e} .faints{stroke:#5d564e}
+ .paper{fill:#22201d} .tape{fill:#4a443d} .shadow{fill:#000;opacity:.25}
+ .l1{stroke:#8d5a66} .l2{stroke:#b9737f} .l3{stroke:#d89aa5} .l4{stroke:#f0c4cb} .hl{stroke:#d89aa5}
+ .c0{stroke:#d89aa5} .c1{stroke:#b9a0b8} .c2{stroke:#9a96b8} .c3{stroke:#f0c4cb} .c4{stroke:#c27a86} .c5{stroke:#7d82a8}
+}
+</style>
+<path d="M4 8Q4 5 7 5H19Q22 5 22 8V15Q22 18 19 18H11L6.5 22L7.5 18Q4 18 4 15ZM9.5 11.5H9.6M13 11.5H13.1M16.5 11.5H16.6" class="inks" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(2 6)"/>
+<text x="38" y="27" class="hand ink" font-size="22">say hi</text>
+<path d="M38.7 33.9Q76.5 33.5 115.3 33.1" class="hl" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

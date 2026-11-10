@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="144" height="42" viewBox="0 0 144 42" role="img" aria-label="the blog"><title>the blog</title><style>
+.ink{fill:#1f1b17} .inks{stroke:#1f1b17;fill:none} .soft{fill:#5f574e} .faint{fill:#b9b0a2} .faints{stroke:#b9b0a2;fill:none}
+.paper{fill:#fffdf7} .tape{fill:#ebe4d6;opacity:.9} .shadow{fill:#1f1b17;opacity:.07}
+.l1{stroke:#d89aa5} .l2{stroke:#c27a86} .l3{stroke:#ab5e67} .l4{stroke:#853f46} .hl{stroke:#ab5e67;fill:none}
+.c0{stroke:#ab5e67} .c1{stroke:#957b94} .c2{stroke:#63607d} .c3{stroke:#d89aa5} .c4{stroke:#853f46} .c5{stroke:#3c405e}
+.type{font-family:'Special Elite','Courier Prime','Courier New',Courier,monospace} .hand{font-family:'Caveat','Bradley Hand','Segoe Print','Chalkboard SE','Comic Sans MS',cursive}
+.w{opacity:0;animation:pop .5s ease-out forwards}
+@keyframes pop{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.w{animation:none;opacity:1}}
+@media (prefers-color-scheme:dark){
+ .ink{fill:#ece4d6} .inks{stroke:#ece4d6} .soft{fill:#b3a99b} .faint{fill:#5d564e} .faints{stroke:#5d564e}
+ .paper{fill:#22201d} .tape{fill:#4a443d} .shadow{fill:#000;opacity:.25}
+ .l1{stroke:#8d5a66} .l2{stroke:#b9737f} .l3{stroke:#d89aa5} .l4{stroke:#f0c4cb} .hl{stroke:#d89aa5}
+ .c0{stroke:#d89aa5} .c1{stroke:#b9a0b8} .c2{stroke:#9a96b8} .c3{stroke:#f0c4cb} .c4{stroke:#c27a86} .c5{stroke:#7d82a8}
+}
+</style>
+<path d="M3 9Q8 6.5 13 9.5Q18 6.5 23 9V21Q18 18.5 13 21.5Q8 18.5 3 21ZM13 9.5V21.5" class="inks" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(2 6)"/>
+<text x="38" y="27" class="hand ink" font-size="22">the blog</text>
+<path d="M38.4 33.4Q89.5 33.6 138.3 32.4" class="hl" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

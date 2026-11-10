@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="167" height="42" viewBox="0 0 167 42" role="img" aria-label="yishu.asia"><title>yishu.asia</title><style>
+.ink{fill:#1f1b17} .inks{stroke:#1f1b17;fill:none} .soft{fill:#5f574e} .faint{fill:#b9b0a2} .faints{stroke:#b9b0a2;fill:none}
+.paper{fill:#fffdf7} .tape{fill:#ebe4d6;opacity:.9} .shadow{fill:#1f1b17;opacity:.07}
+.l1{stroke:#d89aa5} .l2{stroke:#c27a86} .l3{stroke:#ab5e67} .l4{stroke:#853f46} .hl{stroke:#ab5e67;fill:none}
+.c0{stroke:#ab5e67} .c1{stroke:#957b94} .c2{stroke:#63607d} .c3{stroke:#d89aa5} .c4{stroke:#853f46} .c5{stroke:#3c405e}
+.type{font-family:'Special Elite','Courier Prime','Courier New',Courier,monospace} .hand{font-family:'Caveat','Bradley Hand','Segoe Print','Chalkboard SE','Comic Sans MS',cursive}
+.w{opacity:0;animation:pop .5s ease-out forwards}
+@keyframes pop{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.w{animation:none;opacity:1}}
+@media (prefers-color-scheme:dark){
+ .ink{fill:#ece4d6} .inks{stroke:#ece4d6} .soft{fill:#b3a99b} .faint{fill:#5d564e} .faints{stroke:#5d564e}
+ .paper{fill:#22201d} .tape{fill:#4a443d} .shadow{fill:#000;opacity:.25}
+ .l1{stroke:#8d5a66} .l2{stroke:#b9737f} .l3{stroke:#d89aa5} .l4{stroke:#f0c4cb} .hl{stroke:#d89aa5}
+ .c0{stroke:#d89aa5} .c1{stroke:#b9a0b8} .c2{stroke:#9a96b8} .c3{stroke:#f0c4cb} .c4{stroke:#c27a86} .c5{stroke:#7d82a8}
+}
+</style>
+<path d="M4 15L13 6L22 15M7 13V23H19V13M13 21C10 18.6 9.6 17 10.8 16.2C11.7 15.6 12.6 16.1 13 16.8C13.4 16.1 14.3 15.6 15.2 16.2C16.4 17 16 18.6 13 21Z" class="inks" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(2 6)"/>
+<text x="38" y="27" class="hand ink" font-size="22">yishu.asia</text>
+<path d="M38.4 33.7Q100.5 32.1 161.5 31.8" class="hl" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

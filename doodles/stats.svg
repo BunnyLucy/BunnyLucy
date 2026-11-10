@@ -1,7 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="440" height="250" viewBox="0 0 440 250" role="img" aria-label="Field notes: 0 stars collected, 78 commits this year, 1 pull requests, 1 issues opened, 5 public repos, 4 followers"><title>Field notes: 0 stars collected, 78 commits this year, 1 pull requests, 1 issues opened, 5 public repos, 4 followers</title><style>
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="250" viewBox="0 0 440 250" role="img" aria-label="Field notes: 0 stars collected, 80 commits this year, 1 pull requests, 1 issues opened, 5 public repos, 4 followers"><title>Field notes: 0 stars collected, 80 commits this year, 1 pull requests, 1 issues opened, 5 public repos, 4 followers</title><style>
 .ink{fill:#1f1b17} .inks{stroke:#1f1b17;fill:none} .soft{fill:#5f574e} .faint{fill:#b9b0a2} .faints{stroke:#b9b0a2;fill:none}
 .paper{fill:#fffdf7} .tape{fill:#ebe4d6;opacity:.9} .shadow{fill:#1f1b17;opacity:.07}
-.l1{stroke:#d9a441} .l2{stroke:#ef9a73} .l3{stroke:#e07368} .l4{stroke:#ad5d58} .hl{stroke:#e07368;fill:none}
+.l1{stroke:#d89aa5} .l2{stroke:#c27a86} .l3{stroke:#ab5e67} .l4{stroke:#853f46} .hl{stroke:#ab5e67;fill:none}
+.c0{stroke:#ab5e67} .c1{stroke:#957b94} .c2{stroke:#63607d} .c3{stroke:#d89aa5} .c4{stroke:#853f46} .c5{stroke:#3c405e}
 .type{font-family:'Special Elite','Courier Prime','Courier New',Courier,monospace} .hand{font-family:'Caveat','Bradley Hand','Segoe Print','Chalkboard SE','Comic Sans MS',cursive}
 .w{opacity:0;animation:pop .5s ease-out forwards}
 @keyframes pop{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
@@ -9,7 +10,8 @@
 @media (prefers-color-scheme:dark){
  .ink{fill:#ece4d6} .inks{stroke:#ece4d6} .soft{fill:#b3a99b} .faint{fill:#5d564e} .faints{stroke:#5d564e}
  .paper{fill:#22201d} .tape{fill:#4a443d} .shadow{fill:#000;opacity:.25}
- .l1{stroke:#e8bf6a} .l2{stroke:#f3aa87} .l3{stroke:#ec8a7e} .l4{stroke:#f2b3a6} .hl{stroke:#ec8a7e}
+ .l1{stroke:#8d5a66} .l2{stroke:#b9737f} .l3{stroke:#d89aa5} .l4{stroke:#f0c4cb} .hl{stroke:#d89aa5}
+ .c0{stroke:#d89aa5} .c1{stroke:#b9a0b8} .c2{stroke:#9a96b8} .c3{stroke:#f0c4cb} .c4{stroke:#c27a86} .c5{stroke:#7d82a8}
 }
 </style>
 <g transform="rotate(-1.2 220.0 125.0)">
@@ -24,7 +26,7 @@
 <text x="394" y="96" text-anchor="end" class="hand ink" font-size="23">0</text>
 <text x="40" y="118" class="type soft" font-size="12.5">commits this year</text>
 <path d="M177.6 114.7Q262.1 113.8 347.6 113.7" class="faints" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 4"/>
-<text x="394" y="120" text-anchor="end" class="hand ink" font-size="23">78</text>
+<text x="394" y="120" text-anchor="end" class="hand ink" font-size="23">80</text>
 <text x="40" y="142" class="type soft" font-size="12.5">pull requests</text>
 <path d="M147.1 139.0Q248.0 138.5 348.1 137.7" class="faints" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 4"/>
 <text x="394" y="144" text-anchor="end" class="hand ink" font-size="23">1</text>
