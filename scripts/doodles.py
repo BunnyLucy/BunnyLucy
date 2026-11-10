@@ -11,25 +11,77 @@ TOKEN = os.environ.get("GITHUB_TOKEN", "")
 OUT = os.environ.get("DOODLE_OUT", "doodles")
 MOCK = os.environ.get("DOODLE_MOCK")
 
-TYPE = "'Special Elite','Courier Prime','Courier New',Courier,monospace"
-HAND = "'Caveat','Bradley Hand','Segoe Print','Chalkboard SE','Comic Sans MS',cursive"
+TYPE = "'YType','Special Elite','Courier Prime','Courier New',Courier,monospace"
+HAND = "'YHand','Kalam','Caveat','Bradley Hand','Segoe Print','Comic Sans MS',cursive"
+
+# Fonts are subset and embedded so every visitor sees the same lettering.
+FONT_SRC = {
+    "YHand": "https://raw.githubusercontent.com/google/fonts/main/ofl/kalam/Kalam-Bold.ttf",
+    "YType": "https://raw.githubusercontent.com/google/fonts/main/apache/specialelite/SpecialElite-Regular.ttf",
+}
+_fonts = {}
 
 STYLE = f"""<style>
 .ink{{fill:#1f1b17}} .inks{{stroke:#1f1b17;fill:none}} .soft{{fill:#5f574e}} .faint{{fill:#b9b0a2}} .faints{{stroke:#b9b0a2;fill:none}}
-.paper{{fill:#fffdf7}} .tape{{fill:#ebe4d6;opacity:.9}} .shadow{{fill:#1f1b17;opacity:.07}}
+.glyph{{fill:#1f1b17;stroke:#1f1b17}} .paper{{fill:#fffdf7}} .tape{{fill:#ebe4d6;opacity:.9}} .shadow{{fill:#1f1b17;opacity:.07}}
 .l1{{stroke:#d89aa5}} .l2{{stroke:#c27a86}} .l3{{stroke:#ab5e67}} .l4{{stroke:#853f46}} .hl{{stroke:#ab5e67;fill:none}}
 .c0{{stroke:#ab5e67}} .c1{{stroke:#957b94}} .c2{{stroke:#63607d}} .c3{{stroke:#d89aa5}} .c4{{stroke:#853f46}} .c5{{stroke:#3c405e}}
-.type{{font-family:{TYPE}}} .hand{{font-family:{HAND}}}
+.type{{font-family:{TYPE}}} .hand{{font-family:{HAND};font-weight:700}}
 .w{{opacity:0;animation:pop .5s ease-out forwards}}
 @keyframes pop{{from{{opacity:0;transform:translateY(-4px)}}to{{opacity:1;transform:none}}}}
 @media (prefers-reduced-motion:reduce){{.w{{animation:none;opacity:1}}}}
 @media (prefers-color-scheme:dark){{
  .ink{{fill:#ece4d6}} .inks{{stroke:#ece4d6}} .soft{{fill:#b3a99b}} .faint{{fill:#5d564e}} .faints{{stroke:#5d564e}}
- .paper{{fill:#22201d}} .tape{{fill:#4a443d}} .shadow{{fill:#000;opacity:.25}}
+ .glyph{{fill:#ece4d6;stroke:#ece4d6}} .paper{{fill:#22201d}} .tape{{fill:#4a443d}} .shadow{{fill:#000;opacity:.25}}
  .l1{{stroke:#8d5a66}} .l2{{stroke:#b9737f}} .l3{{stroke:#d89aa5}} .l4{{stroke:#f0c4cb}} .hl{{stroke:#d89aa5}}
  .c0{{stroke:#d89aa5}} .c1{{stroke:#b9a0b8}} .c2{{stroke:#9a96b8}} .c3{{stroke:#f0c4cb}} .c4{{stroke:#c27a86}} .c5{{stroke:#7d82a8}}
 }}
 </style>"""
+
+
+# ---------------------------------------------------------------- fonts
+def font_bytes(name):
+    if name not in _fonts:
+        try:
+            _fonts[name] = urllib.request.urlopen(FONT_SRC[name], timeout=30).read()
+        except Exception as e:  # fall back to the system font stacks
+            print("font download failed:", name, e)
+            _fonts[name] = None
+    return _fonts[name]
+
+
+def embed_fonts(svgtext):
+    try:
+        from fontTools import subset
+        from fontTools.ttLib import TTFont
+    except ImportError:
+        print("fontTools missing, using system fonts")
+        return svgtext
+    import base64, html, io, re
+    body = svgtext.split("</style>", 1)[-1]
+    chars = set("".join(html.unescape(t) for t in re.findall(r">([^<>]+)<", body))) | set("0123456789%")
+    faces = []
+    for name, weight in (("YHand", 700), ("YType", 400)):
+        data = font_bytes(name)
+        if not data:
+            continue
+        for flavor in ("woff2", "woff"):  # woff2 needs brotli; woff only needs zlib
+            try:
+                font = TTFont(io.BytesIO(data))
+                sub = subset.Subsetter(subset.Options())
+                sub.populate(text="".join(chars))
+                sub.subset(font)
+                buf = io.BytesIO()
+                font.flavor = flavor
+                font.save(buf)
+            except Exception as e:
+                print(f"{name}: {flavor} failed ({e})")
+                continue
+            b64 = base64.b64encode(buf.getvalue()).decode()
+            faces.append(f"@font-face{{font-family:'{name}';font-weight:{weight};"
+                         f"src:url(data:font/{flavor};base64,{b64}) format('{flavor}')}}")
+            break
+    return svgtext.replace("<style>", "<style>\n" + "\n".join(faces), 1) if faces else svgtext
 
 
 # ---------------------------------------------------------------- data
@@ -222,7 +274,7 @@ def stats(user):
         y = 94 + i * 24
         body.append(f'<text x="40" y="{y}" class="type soft" font-size="12.5">{label}</text>')
         body.append(path(p.line(40 + len(label) * 7.6 + 8, y - 3, W - 92, y - 4, 0.8), "faints", 1, 'stroke-dasharray="1 4"'))
-        body.append(f'<text x="{W - 46}" y="{y + 2}" text-anchor="end" class="hand ink" font-size="23">{val}</text>')
+        body.append(f'<text x="{W - 46}" y="{y + 2}" text-anchor="end" class="hand ink" font-size="21">{val}</text>')
     # a little doodled star in the corner
     cx, cy, pts = W - 62, 54, []
     for k in range(11):
@@ -244,7 +296,7 @@ def langs(user):
             sizes.setdefault(k, [0, e["node"]["color"] or "#b9b0a2"])
             sizes[k][0] += e["size"]
     total = sum(v[0] for v in sizes.values()) or 1
-    top = [kv for kv in sorted(sizes.items(), key=lambda kv: -kv[1][0]) if kv[1][0] / total >= 0.01][:6]
+    top = [kv for kv in sorted(sizes.items(), key=lambda kv: -kv[1][0]) if kv[1][0] / total >= 0.005][:6]
     body = card_frame(p, W, H, "INK & LANGUAGES", 1.1)
     x0, maxw = 150, W - 150 - 112
     for i, (name, (size, color)) in enumerate(top):
@@ -254,7 +306,7 @@ def langs(user):
         body.append(f'<text x="40" y="{y}" class="type soft" font-size="12.5">{esc(name)}</text>')
         body.append(path(p.scribble(x0, y - 11, bw, 9, max(3, int(bw / 4))), f"c{i}", 2))
         body.append(path(p.line(x0 - 2, y + 1, x0 + bw + 2, y, 0.8), "inks", 0.9))
-        body.append(f'<text x="{W - 46}" y="{y + 1}" text-anchor="end" class="hand ink" font-size="20">'
+        body.append(f'<text x="{W - 46}" y="{y + 1}" text-anchor="end" class="hand ink" font-size="19">'
                     f'{pct * 100:.0f}%</text>')
     if not top:
         body.append('<text x="40" y="110" class="hand soft" font-size="20">nothing here yet</text>')
@@ -262,29 +314,43 @@ def langs(user):
     return svg(W, H, "Languages: " + ", ".join(f"{k} {v[0] * 100 / total:.0f}%" for k, v in top), "\n".join(body))
 
 
-# ---------------------------------------------------------------- link doodles
-ICONS = {
-    # tiny house with a heart window
-    "home": "M4 15L13 6L22 15M7 13V23H19V13M13 21C10 18.6 9.6 17 10.8 16.2C11.7 15.6 12.6 16.1 13 16.8C13.4 16.1 14.3 15.6 15.2 16.2C16.4 17 16 18.6 13 21Z",
-    # open book
-    "blog": "M3 9Q8 6.5 13 9.5Q18 6.5 23 9V21Q18 18.5 13 21.5Q8 18.5 3 21ZM13 9.5V21.5",
-    # island with a little hill and a wave
-    "island": "M3 19Q8 12 13 13Q18 12 23 19ZM9 13.4Q11 8 14.5 9.5M14.5 9.5Q16.5 6.5 19 8M2 23Q5 21 8 23T14 23T20 23T25 22",
-    # speech bubble
-    "hi": "M4 8Q4 5 7 5H19Q22 5 22 8V15Q22 18 19 18H11L6.5 22L7.5 18Q4 18 4 15ZM9.5 11.5H9.6M13 11.5H13.1M16.5 11.5H16.6",
-}
+# ---------------------------------------------------------------- handwritten links
+# Blog / 3D / Contact are drawn from the glyphs yishu.asia itself uses, so they stay in sync.
+WORDS = [("blog", "blog", "Blog"), ("3d", "threeD", "3D"), ("contact", "contact", "Contact")]
+ARROW = "M2 9 Q14 5 34 8 M27 3 L35 8 L28 13"
 
 
-def link(key, label):
-    p = Pencil("link-" + key)
-    w = int(52 + len(label) * 11.5)
-    body = [path(ICONS[key], "inks", 1.6, 'transform="translate(2 6)"'),
-            f'<text x="38" y="27" class="hand ink" font-size="22">{esc(label)}</text>',
-            path(p.line(38, 34, w - 6, 32.5, 1.8), "hl", 1.8)]
-    return svg(w, 42, label, "\n".join(body))
+def handwriting():
+    import re
+    page = urllib.request.urlopen("https://yishu.asia/", timeout=30).read().decode()
+    src = re.search(r'src="(/assets/index-[^"]+\.js)"', page).group(1)
+    js = urllib.request.urlopen("https://yishu.asia" + src, timeout=30).read().decode()
+    words = {}
+    for slug, key, label in WORDS:
+        i = js.index(key + ":{glyphs:[") + len(key) + 1
+        depth = 0
+        for j in range(i, len(js)):
+            depth += {"{": 1, "}": -1}.get(js[j], 0)
+            if depth == 0:
+                break
+        lit = re.sub(r'([{,])([A-Za-z_]\w*):', r'\1"\2":', js[i:j + 1])
+        words[slug] = json.loads(lit)
+    return words
 
 
-LINKS = [("home", "yishu.asia"), ("blog", "the blog"), ("island", "the 3D island"), ("hi", "say hi")]
+def link(word, label):
+    cap = word["glyphs"][0]["h"]  # normalise by the first capital
+    sc = 26 / cap
+    paths = "".join(f'<path d="{g["d"]}" transform="translate({g["x"]} {g["y"]})"/>' for g in word["glyphs"])
+    ww, wh = word["w"] * sc, word["h"] * sc
+    top = word["glyphs"][0]["y"] * sc
+    W, H = int(ww + 46), 44
+    oy = 6 - top
+    body = (f'<g transform="translate(4 {oy:.1f}) scale({sc:.4f})" class="glyph" stroke-width="4" '
+            f'stroke-linejoin="round">{paths}</g>'
+            f'<svg x="{ww + 12:.1f}" y="{6 + 26 * 0.55 - 6:.1f}" width="30" height="12" viewBox="0 0 40 16">'
+            f'{path(ARROW, "hl", 2.2)}</svg>')
+    return svg(W, H, label, body)
 
 
 if __name__ == "__main__":
@@ -292,9 +358,22 @@ if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     for name, fn in (("contrib", contrib), ("stats", stats), ("langs", langs)):
         with open(f"{OUT}/{name}.svg", "w", encoding="utf-8") as f:
-            f.write(fn(user))
+            f.write(embed_fonts(fn(user)))
         print("drew", name)
-    for key, label in LINKS:
-        with open(f"{OUT}/link-{key}.svg", "w", encoding="utf-8") as f:
-            f.write(link(key, label))
-    print("drew links")
+    try:
+        for slug, word in handwriting().items():
+            label = dict((a, c) for a, _, c in WORDS)[slug]
+            with open(f"{OUT}/link-{slug}.svg", "w", encoding="utf-8") as f:
+                f.write(link(word, label))
+        print("drew links")
+    except Exception as e:  # keep yesterday's links if the site is unreachable
+        print("handwriting fetch failed, keeping existing links:", e)
+    for old in ("home", "island", "hi"):
+        if os.path.exists(f"{OUT}/link-{old}.svg"):
+            os.remove(f"{OUT}/link-{old}.svg")
+    # the header is a hand-made template; only its fonts get embedded here
+    tpl = os.path.join(os.path.dirname(__file__), "header.svg")
+    if os.path.exists(tpl):
+        with open(f"{OUT}/header.svg", "w", encoding="utf-8") as f:
+            f.write(embed_fonts(open(tpl, encoding="utf-8").read()))
+        print("drew header")

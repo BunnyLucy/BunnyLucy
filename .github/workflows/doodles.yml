@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: fonts toolkit
+        run: pip install --quiet fonttools brotli
       - name: draw
         run: python3 scripts/doodles.py
         env:
